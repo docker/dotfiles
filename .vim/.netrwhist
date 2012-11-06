@@ -1,0 +1,6 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhist_cnt =4
+let g:netrw_dirhist_1='/home/docker/public_html/d7-devel/sites/all/modules/contrib'
+let g:netrw_dirhist_2='/home/docker/public_html/d7-devel/sites/all/themes/fbalogherzsebet'
+let g:netrw_dirhist_3='/home/docker/public_html/d7-devel/sites/all/themes/jaszdozsa960'
+let g:netrw_dirhist_4='/home/docker/public_html/d7-devel/sites/all/modules/devel/myblock'
