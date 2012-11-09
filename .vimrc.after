@@ -1,0 +1,121 @@
+"""""""""""""""""""""""""""
+" General
+"""""""""""""""""""""""""""
+
+" Set case behaviour
+set ignorecase
+set smartcase
+
+" Don't redraw while executing macros (good performance config)
+set lazyredraw
+
+" Hide buffers instead of closing them
+set hidden
+
+" Copy text between app and vim through the clipboard
+set tw=0 wrap linebreak
+
+" Set numbers of saved changes
+set history=1000
+
+" Turn Off Swap Files
+set noswapfile
+set nobackup
+set nowb
+
+"""""""""""""""""""""""""""
+" User interface
+"""""""""""""""""""""""""""
+
+" Maintain more context around the cursor
+set scrolloff=5
+
+set wildmenu
+set showcmd
+
+" mark the end of the rewrite selection when using 'cw'
+set cpoptions+=$
+
+" Command bar height
+set ch=2
+
+" set out tab characters, trailing whitespace and invisible spaces visually
+set listchars=tab:>.,trail:.,extends:#,nbsp:.
+
+" showmatch: Show the matching bracket for the last ')'?
+set showmatch
+
+" gui sensitive colorscheme settings
+if has('gui_running')
+  " no toolbar
+  set guioptions-=T
+  colorscheme solarized
+else
+  " something for console Vim
+  set t_Co=256
+  colorscheme mustang
+endif
+
+
+"""""""""""""""""""""""""""
+" File types
+"""""""""""""""""""""""""""
+" set PHP specific tabs
+set filetype=php expandtab tabstop=2 shiftwidth=2 autoindent smartindent
+" Drupal CodeSniffer integration with Syntastic
+let g:syntastic_phpcs_conf=" --standard=Drupal --extensions=php,module,inc,install,test,profile,theme"
+
+
+"""""""""""""""""""""""""""
+" Statusline
+"""""""""""""""""""""""""""
+" Better statusline
+" from https://github.com/spf13/spf13-vim/blob/master/.vimrc
+if has('statusline')
+  set laststatus=2
+  " Broken down into easily includeable segments
+  set statusline=%<%f\    " Filename
+  set statusline+=%w%h%m%r " Options
+  set statusline+=%{fugitive#statusline()} "  Git Hotness
+  set statusline+=\ [%{&ff}/%Y]            " filetype
+"  set statusline+=\ [%{getcwd()}]          " current dir
+  set statusline+=%#warningmsg#
+  set statusline+=%{SyntasticStatuslineFlag()}
+  set statusline+=%*
+  let g:syntastic_enable_signs=1
+  set statusline+=%=%-14.(%l,%c%V%)\ %p%%  " Right aligned file nav info
+"set statusline=[%02n]\ %f\ %(\[%M%R%H]%)%=\ %4l,%02c%2V\ %P%*
+endif
+
+"""""""""""""""""""""""""""
+" NERDTree
+"""""""""""""""""""""""""""
+"let NERDTreeChDirMode=2
+let NERDTreeQuitOnOpen=1
+let NERDTreeShowBookmarks=1
+"nnoremap <leader>n :NERDTree .<CR>
+
+"""""""""""""""""""""""""""
+" Tags
+"""""""""""""""""""""""""""
+" replace Taglist module with Tagbar
+let tagbar_autofocus = 1
+let tagbar_autoclose = 1
+
+
+"""""""""""""""""""""""""""
+" Keystrokes
+"""""""""""""""""""""""""""
+
+" Easy window navigation
+map <C-h> <C-w>h
+map <C-j> <C-w>j
+map <C-k> <C-w>k
+map <C-l> <C-w>l
+
+" stops to jump cursor “over” the current line to the next line
+nnoremap j gj
+nnoremap k gk
+
+map <F2> :NERDTreeToggle<CR>
+nmap <F8> :TagbarToggle<CR>
