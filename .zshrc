@@ -34,37 +34,20 @@ plugins=(git)
 source $ZSH/oh-my-zsh.sh
 
 # Customize to your needs...
+
 # vi keybindings
 bindkey -v
+
 # bind CTRL-R to history search
 bindkey -M viins '^r' history-incremental-search-backward
 bindkey -M vicmd '^r' history-incremental-search-backward
-# mode indicator
 
-vim_ins_mode="[INS]"
-vim_cmd_mode="[CMD]"
-vim_mode=$vim_ins_mode
+# aliases
+alias batchgitclone="find . -name ".git"  -type d -prune -execdir git pull \;"
+alias tmux="tmux -2"
+alias rscp="rsync --partial --progress --rsh=ssh --archive"
 
-function zle-keymap-select {
-  vim_mode="${${KEYMAP/vicmd/${vim_cmd_mode}}/(main|viins)/${vim_ins_mode}}"
-  zle reset-prompt
-}
-zle -N zle-keymap-select
-
-function zle-line-finish {
-  vim_mode=$vim_ins_mode
-}
-zle -N zle-line-finish
-RPS1='${vim_mode}'
-
-#terminfo_down_sc=$terminfo[cud1]$terminfo[cuu1]$terminfo[sc]$terminfo[cud1]
-#function zle-line-init zle-keymap-select {
-#    PS1_2="${${KEYMAP/vicmd/-- NORMAL --}/(main|viins)/-- INSERT --}"
-#    PS1="%{$terminfo_down_sc$PS1_2$terminfo[rc]%}%~ %# "
-#    zle reset-prompt
-#}
-#preexec () { print -rn -- $terminfo[el]; }
-
-# cdargs
-source /usr/share/doc/cdargs/examples/cdargs-bash.sh
-
+# private settings
+if [ -e ~/.zsh.extra ]; then
+  source $HOME/.zsh.extra
+fi
