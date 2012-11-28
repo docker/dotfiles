@@ -119,3 +119,14 @@ nnoremap k gk
 
 map <F2> :NERDTreeToggle<CR>
 nmap <F8> :TagbarToggle<CR>
+map <F3> :SyntasticToggleMode<CR>
+
+"Stay away from arrow keys
+noremap  <Up> ""
+noremap! <Up> <Esc>
+noremap  <Down> ""
+noremap! <Down> <Esc>
+noremap  <Left> ""
+noremap! <Left> <Esc>
+noremap  <Right> ""
+noremap! <Right> <Esc>
