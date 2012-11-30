@@ -1,0 +1,6 @@
+[submodule ".janus/drupal-snippets"]
+	path = .janus/drupal-snippets
+	url = https://github.com/technosophos/drupal-snippets.git
+[submodule ".janus/powerline"]
+	path = .janus/powerline
+	url = https://github.com/Lokaltog/vim-powerline.git
